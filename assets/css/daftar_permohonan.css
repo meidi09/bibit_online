@@ -1,0 +1,105 @@
+td img {
+    width: 2vw;
+}
+
+.cari_input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_search {
+    margin-left: 2vw;
+}
+
+form.cari_input input[type=search] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 30vw;
+    height: 2vw;
+    background: #f1f1f1;
+}
+
+form.cari_input button {
+    float: left;
+    width: 2vw;
+    height: 2vw;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.cari_input button:hover {
+    background: #0b7dda;
+}
+
+form.cari_input::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+form.cari_input {
+    margin: 0;
+}
+
+.cari_input button {
+    width: 18vw;
+    height: fit-content;
+    font-size: 1vw;
+    margin-left: 0;
+}
+
+img.search_img {
+    width: auto;
+}
+
+
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
+        width: 90vw;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+
+    td img {
+        width: 6vw;
+    }
+}

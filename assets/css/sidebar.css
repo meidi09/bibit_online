@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    font-size: 0.8vw;
+}
+
+.wrapper {
+    display: flex;
+    position: relative;
+}
+
+.wrapper .sidebar {
+    width: 200px;
+    height: 100%;
+    background: #003100;
+    padding: 30px 0px;
+    position: fixed;
+}
+
+.wrapper .sidebar img {
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    width: 50%;
+}
+
+
+
+.wrapper .sidebar ul li {
+    border-bottom: 1px solid #bdb8d7;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.wrapper .sidebar ul li a {
+    padding: 15px;
+    color: #ffffff;
+    display: block;
+}
+
+
+
+.wrapper .sidebar ul li:hover {
+    background-color: rgb(233, 133, 26);
+}
+
+.wrapper .sidebar ul li:hover a {
+    color: #fff;
+}
+
+.wrapper .sidebar .login_button {
+    position: absolute;
+    bottom: 0;
+    left: 46%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.wrapper .sidebar .login_button a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 45px;
+    text-align: center;
+    margin: 0 5px;
+    color: rgb(255, 255, 255);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.wrapper .main_content {
+    width: 100%;
+    margin-left: 200px;
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        font-size: 4vw;
+    }
+}
+
+

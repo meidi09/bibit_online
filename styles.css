@@ -1,0 +1,305 @@
+body {
+    font-family: 'Oswald', sans-serif;
+}
+
+
+.welcome {
+    font-family: 'Oswald', sans-serif;
+    font-size: 50px;
+    padding-left: 20px;
+}
+
+main {
+    overflow: auto;
+    padding-bottom: 15vw;
+}
+
+.content {
+    display: flex;
+    overflow: auto;
+}
+
+.menu_buttons {
+    float: left;
+    width: 75%;
+}
+
+.video_tutorial {
+    float: right;
+    width: 25%;
+    padding-left: 20px;
+}
+
+.btn_menu {
+    color: #fff;
+    background-color: #e89814;
+    border: 0.0003px ridge #da9629;
+    border-radius: 1.5rem;
+    width: 350px;
+    height: 175px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1;
+    padding: 1rem 1.6rem;
+    text-align: center;
+}
+
+.btn_menu_top, .btn_menu_down {
+    display: flex;
+    overflow: auto;
+}
+
+
+
+.btn_menu:hover {
+    background-color: #8c8154;
+    color: #fff;
+}
+
+.menu_buttons {
+    padding-top: 20px;
+    padding-left: 20px;
+    float: left;
+}
+
+.menu_buttons form {
+    margin: 0;
+}
+
+.btn_2 {
+    margin-left: 1em;
+}
+
+.btn_menu_down {
+    margin-top: 20px;
+}
+
+.video_tutorial {
+    margin-right: 150px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.txt_tutorial {
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 1286px) {
+    .content {
+        display: block;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .welcome {
+        font-size: 10vw;
+    }
+
+    .video {
+        width: 22em;
+        height: 11em;
+        align-content: center;
+        float: none;
+        display: block;
+        margin: 1em auto;
+    }
+
+    .btn_2 {
+        margin-left: 0;
+    }
+
+    .btn_menu {
+        width: 90vw;
+        height: 25vw;
+        padding-left: 20px;
+        margin-left: 20px;
+        font-size: 8vw;
+        font-weight: 400;
+        float: none;
+        display: block;
+        margin: 0.6em auto;
+    }
+
+    .txt_tutorial {
+        padding-top: 0.5em;
+    }
+
+    .menu_buttons,
+    .video_tutorial {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .btn_menu_top, .btn_menu_down {
+        display: block;
+    }
+    .btn_menu_down {
+        margin-top: -2.5vh;
+    }
+}
+
+/*daftar persemaian*/
+
+select {
+    margin-top: auto;
+    font-size: 1vw;
+    margin: 10px 0 0 0;
+    width: 8vw;
+    height: 4vh;
+}
+
+.daftar {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2vw;
+    padding-left: 20px;
+}
+
+.flex_item {
+    display: flex;
+    overflow: auto;
+    padding-top: 1vh;
+    align-items: center;
+}
+
+.daftar_top select {
+    margin-left: 2vw;
+}
+/*button*/
+.daftar_top button {
+    width: 18vw;
+    height: fit-content;
+    font-size: 1vw;
+    margin-left: 1vw;
+}
+
+h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2vw;
+    font-weight: 500;
+}
+
+.daftar_persemaian button {
+    width: 10vw;
+    height: fit-content;
+    font-size: 1vw;
+    margin-left: 1vw;
+}
+
+.gambar_persemaian {
+    margin-top: 1vh;
+    width: 70vw;
+    height: auto;
+}
+
+@media screen and (max-width: 1000px) {
+    .flex_item {
+        display: block;
+    }
+
+    .daftar {
+        font-size: 8vw;
+    }
+
+    select {
+        margin-top: auto;
+        font-size: 8vw;
+        padding-left: 5vw;
+        width: 80vw;
+        height: fit-content;
+    }
+
+    .daftar_top button {
+        width: 80vw;
+        height: fit-content;
+        font-size: 6vw;
+        margin: 0.6em auto;
+    }
+
+    h4 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 6vw;
+        font-weight: 500;
+        padding-left: 20px;
+    }
+
+    .daftar_persemaian button {
+        width: 70vw;
+        height: fit-content;
+        font-size: 4vw;
+        margin-left: 1vw;
+        margin: 0.6em auto;
+    }
+
+    .gambar_persemaian {
+        width: 80vw;
+        height: auto;
+        margin: 0.6em auto;
+    }
+
+
+}
+
+/*ketersediaan*/
+
+.table_box {
+    margin-top: 2vh;
+    margin-left: 1vw;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    padding: 0;
+    width: 50vw;
+    table-layout: auto;
+}
+
+table tr {
+    background-color: #f8f8f8;
+    padding: .35em;
+}
+
+table th,
+table td {
+    padding: .625em;
+    text-align: center;
+}
+
+table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+/*admin ketersediaan bibit*/
+.flex_item img {
+    width: 40%;
+}
+
+
+th.aksi {
+    width: 8vw;
+}
+.right_image{
+    margin-left: 0.8vw;
+}
