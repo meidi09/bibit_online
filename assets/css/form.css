@@ -112,6 +112,13 @@ textarea {
   font-size: 1vw;
 }
 
+.kurang {
+  display: none;
+  background-color: #e92121;
+  border: 0.0003px ridge #dd2020;
+
+}
+
 .no_margin {
   margin: 0;
   padding: 0;
@@ -126,7 +133,7 @@ textarea {
     margin: 0 auto;
   }
 
-  label{
+  label {
     font-size: 5vw;
   }
 
@@ -134,14 +141,18 @@ textarea {
     font-size: 5vw;
   }
 
-  .submit, .tambah {
+  .submit,
+  .tambah {
     width: 60vw;
     height: fit-content;
     float: none;
     font-size: 4vw;
   }
 
-  input, textarea {
+
+
+  input,
+  textarea {
     font-size: 5vw;
   }
 

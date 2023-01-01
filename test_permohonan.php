@@ -4,7 +4,7 @@ include 'config.php';
 //debug
 
 if (empty($_GET['id_persemaian'])) {
-    header("Location: test_permohonan.php?id_persemaian=1");
+    header("Location: membuat_permohonan.php?id_persemaian=1");
     exit;
 }
 
@@ -30,7 +30,8 @@ if (empty($_SESSION['id_user'])) {
 
     <link rel="stylesheet" href="assets/css/form.css" />
 
-    <!--<script src="permohonan.js"></script> -->
+    <!--<script src="permohonan.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 </head>
 
@@ -47,7 +48,7 @@ if (empty($_SESSION['id_user'])) {
         </div>
 
         <div>
-            <form method="post" id="permohonan_form">
+            <form method="post" id="permohonan_form" name="permohonan_form">
                 <fieldset>
                     <Label class="Bold">Kebutuhan Bibit</Label>
                     <label>Persemaian:
@@ -73,7 +74,7 @@ if (empty($_SESSION['id_user'])) {
 
                         <!--pilih bibit-->
                         <label>Jenis Bibit:
-                            <select id="jenis_bibit" name="jenis_bibit" onchange="getJenis(event)">
+                            <select id="jenis_bibit" name="jenis_bibit[]" onchange="getJenis(event)">
                                 <option value="" disabled selected>-- Pilih Bibit --</option>
                                 <?php
 
@@ -91,60 +92,42 @@ if (empty($_SESSION['id_user'])) {
                             </select>
                         </label>
 
-                        <label id="jumlah_permohonan_label">Jumlah Permohonan: <input type="number" id="jumlah_permohonan" name="jumlah_permohonan" placeholder="Masukan Jumlah Bibit" min="1" max="10000" /></label>
+                        <label id="jumlah_permohonan_label">Jumlah Permohonan: <input type="number" id="jumlah_permohonan" name="jumlah_permohonan[]" onblur="jumlah_bibit_total()" placeholder="Masukan Jumlah Bibit" min="1" max="10000" /></label>
                         <label id="ketersediaan_label">Jumlah Ketersediaan: <input type="number" id="ketersediaan" disabled name="ketersediaan" value="" /></label>
                     </div>
-                    <button type="button" name="tambah" id="tambah" class="tambah">Tambah Jenis</button>
+                    <button type="button" name="add" id="add" class="tambah">Tambah Jenis</button>
 
                     <label id="jumlah_bibit_label">Jumlah Bibit: <input type="number" id="jumlah_bibit" disabled name="jumlah_bibit" /></label>
 
 
+                    <Label class="Bold">Data Pemohon</Label>
+                    <label class="form_card">Tipe Pemohon:<br>
+                        <label><input type="radio" name="tipe_pemohon" value="perorangan" class="inline" onclick="check(this.value)" required /> Perorangan</label>
+                        <label><input type="radio" name="tipe_pemohon" value="kelompok" class="inline" onclick="check(this.value)" /> Kelompok</label>
+                    </label>
 
                     <label id="nama_label" class="form_card">Nama Perorangan/Kelompok: <input type="text" id="nama" name="nama" placeholder="Masukan Nama" required /></label>
+                    <label id="no_label" class="form_card">Nomor Telepon: <input type="text" id="no_telp" name="no_telp" placeholder="Masukan Nomor Telepon" required /></label>
+
+                    <label id="jumlah_anggota_label" class="form_card">Jumlah Anggota: <input type="number" id="jumlah_anggota" name="jumlah_anggota" placeholder="Masukan Jumlah Anggota" min="1" max="10000" disabled />(Untuk Kelompok)</label>
+
+                    <label id="foto_ktp" class="form_card">KTP/Fotokopi KTP (Format file: jpg, jpeg, png. Max: 8 MB): <input type="file" id="ktp" name="ktp" accept="image/png, image/jpeg, image/jpg" /></label>
+
+                    <Label class="Bold">Rencana Lokasi Penanaman</Label>
+                    <label id="nama_lokasi_label" class="form_card">Dusun/Nama Perkebunan: <input type="text" id="nama_lokasi" name="nama_lokasi" placeholder="Masukan Nama Dusun/Perkebunan" required /></label>
+                    <label id="nama_desa_label" class="form_card">Desa/Kelurahan: <input type="text" id="nama_desa" name="nama_desa" placeholder="Masukan Nama Desa/Kelurahan" required /></label>
+                    <label id="nama_kecamatan_label" class="form_card">Kecamatan: <input type="text" id="nama_kecamatan" name="nama_kecamatan" placeholder="Masukan Nama Kecamatan" required /></label>
+                    <label id="nama_kabupaten" class="form_card">Nama Kebupaten/Kota: <input type="text" id="nama_kabupaten" name="nama_kabupaten" placeholder="Masukan Nama Kabupaten/Kota" required /></label>
+
+                    <label id="luas_penanaman" class="form_card">Luas Penanaman (Ha): <input type="number" id="luas" name="luas" min="0" step="any" placeholder="Masukan Luas Penanaman" /></label>
+                    <label id="peta_lokasi" class="form_card">Peta Lokasi (Bisa Screenshot Dari Maps, format file: jpg, jpeg, png. Max: 8 MB): <input type="file" id="peta" name="peta" accept="image/png, image/jpeg, image/jpg" /></label>
+                    <label>Keterangan:
+                        <textarea name="keterangan" rows="3" cols="30" placeholder="Masukan Keterangan Lokasi"></textarea>
+                    </label>
+                    
+                    
                     <input type="submit" id="submit" name="submit" value="Lakukan Permohonan" class="btn_menu submit" />
 
-                    <?php
-
-                    //Memasukan Pendaftaran
-                    if (isset($_POST['submit'])) {
-                        if (empty($_SESSION['id_user'])) {
-                            $id_user = "26";
-                        } else {
-                            $id_user = $_SESSION['id_user'];
-                        }
-
-
-                        $tipe_pemohon = $_POST['tipe_pemohon'];
-                        $nama = $_POST['nama'];
-                        $no_telp = $_POST['no_telp'];
-                        $jumlah_anggota = $_POST['jumlah_anggota'];
-                        $ktp = $_POST['ktp'];
-
-                        $nama_lokasi = $_POST['nama_lokasi'];
-                        $nama_desa = $_POST['nama_desa'];
-                        $nama_kecamatan = $_POST['nama_kecamatan'];
-                        $nama_kabupaten = $_POST['nama_kabupaten'];
-                        $nama = $_POST['nama'];
-                        $luas_penanaman = $_POST['luas_penanaman'];
-                        $jumlah_bibit = $_POST['jumlah_bibit'];
-
-                        $query = "INSERT INTO `permohonan` (`id_permohonan`, `id_user`, `jumlah_bibit`, `tgl_dibuat`, `tgl_selesai`, 
-                        `status_permohonan`, `tipe_pemohon`, `nama_pemohon`, `jumlah_anggota`, `nama_dusun`, `nama_kecamatan`, 
-                        `nama_kota`, `luas_penanaman`, `keterangan`, `peta_lokasi`, `ktp_pemohon`) 
-                        VALUES (NULL, '26', '200', '2022-12-12', '',
-                         'Menunggu', 'perorangan', 'Wayne W', '1', 'Kebun Kesadaran', 'Talawaan', 
-                         'Minahasa Utara', '2', 'Kebun keluarga besar', 'data/peta/test.png', 'data/ktp/test.png')";
-                        $result = mysqli_query($conn, $query);
-                        if ($result) {
-                            $berhasil = "Permohonan Berhasil Dibuat";
-                            echo "<script type='text/javascript'>
-                                alert('$berhasil');
-                            </script>";
-                        } else {
-                            echo "<script>alert('Gagal')</script>";
-                        }
-                    }
-                    ?>
 
                 </fieldset>
             </form>
@@ -163,11 +146,57 @@ if (empty($_SESSION['id_user'])) {
             var str = e.target.value
             var str_array = str.split("|")
 
-            document.getElementById("nama").value = str_array[0]
-            document.getElementById("ketersediaan").value = str_array[1]
+            var index = event.target.id;
+            index = index.replace('jenis_bibit', '');
+            ketersediaan = "ketersediaan" + index;
 
-            jumlah_permohonan.setAttribute("max",str_array[1]);
+            document.getElementById(ketersediaan).value = str_array[1]
+
+            //jumlah_permohonan.setAttribute("max", str_array[1]);
+            var max = document.getElementById("jumlah_permohonan" + index);
+            max.setAttribute("max", str_array[1]); // set a new value;
         }
+
+        function jumlah_bibit_total() {
+            var arr = document.getElementsByName('jumlah_permohonan[]');
+            var total_bibit = 0;
+            for (var i = 0; i < arr.length; i++) {
+                if (parseInt(arr[i].value))
+                    total_bibit += parseInt(arr[i].value);
+            }
+            document.getElementById('jumlah_bibit').value = total_bibit;
+        }
+
+        function check(tipe_pemohon) {
+            if (tipe_pemohon == "perorangan"){
+                document.getElementById("jumlah_anggota").disabled = true;
+                document.getElementById("jumlah_anggota").value = 1;
+            }
+            else {
+                document.getElementById("jumlah_anggota").disabled = false;
+            }
+            
+        }
+
+        var count = 0;
+        $(document).ready(function() {
+            var count = 0;
+            $("#add").click(function(e) {
+                var clone = $(".rows:eq(0)").clone();
+                clone.find(':input').attr('id', function(i, val) {
+                    return val + count;
+                });
+                $(".rows:last").after(clone);
+                document.getElementById("ketersediaan" + count).value = "";
+                document.getElementById("jumlah_permohonan" + count).value = "";
+                count++;
+            });
+            $(document).on('click', '.btn_remove', function() {
+                var button_id = $(this).attr("id");
+                $('#row' + button_id + '').remove();
+            });
+
+        });
     </script>
 
 </body>

@@ -124,75 +124,10 @@ if (empty($_SESSION['id_user'])) {
                     <label>Keterangan:
                         <textarea name="keterangan" rows="3" cols="30" placeholder="Masukan Keterangan Lokasi"></textarea>
                     </label>
-                    <!--
-                    <Label class="Bold">Kebutuhan Bibit</Label>
-                    <label>Persemaian:
-                        <select id="pilih_persemaian" name="pilih_persemaian">
-                            <option value="kima_atas">Kima Atas</option>
-                            <option value="toraut_utara">Toraut Utara</option>
-                            <option value="likupang_batuputih">Likupang Batuputih</option>
-                        </select>
-                    </label>
-
-                    <div class="form_card jenis_bibit">
-                        
-                        <label>Jenis Bibit:
-                            <select id="jenis_bibit" name="jenis_bibit">
-                                <option value="rambutan">Rambutan</option>
-                            </select>
-                        </label>
-                        <label id="jumlah_permohonan">Jumlah Permohonan: <input type="number" id="jumlah" name="jumlah_permohonan" placeholder="Masukan Jumlah Bibit" min="1" max="10000" /></label>
-                        <label id="Ketersediaan">Jumlah Ketersediaan: <input type="number" id="ketersediaan" disabled name="ketersediaan" /></label>
-                    </div>
-
-                    <button class="tambah">Tambah Jenis</button>
-
-                    <label id="jumlah_bibit">Jumlah Bibit: <input type="number" id="jumlah_bibit" disabled name="jumlah_bibit" /></label>
--->
+                    
+                    
                     <input type="submit" id="submit" name="submit" value="Lakukan Permohonan" class="btn_menu submit" />
 
-                    <?php
-
-                    //Memasukan Pendaftaran
-                    if (isset($_POST['submit'])) {
-                        if (empty($_SESSION['id_user'])) {
-                            $id_user = "26";
-                        } else {
-                            $id_user = $_SESSION['id_user'];
-                        }
-
-
-                        $tipe_pemohon = $_POST['tipe_pemohon'];
-                        $nama = $_POST['nama'];
-                        $no_telp = $_POST['no_telp'];
-                        $jumlah_anggota = $_POST['jumlah_anggota'];
-                        $ktp = $_POST['ktp'];
-
-                        $nama_lokasi = $_POST['nama_lokasi'];
-                        $nama_desa = $_POST['nama_desa'];
-                        $nama_kecamatan = $_POST['nama_kecamatan'];
-                        $nama_kabupaten = $_POST['nama_kabupaten'];
-                        $nama = $_POST['nama'];
-                        $luas_penanaman = $_POST['luas_penanaman'];
-                        $jumlah_bibit = $_POST['jumlah_bibit'];
-
-                        $query = "INSERT INTO `permohonan` (`id_permohonan`, `id_user`, `jumlah_bibit`, `tgl_dibuat`, `tgl_selesai`, 
-                        `status_permohonan`, `tipe_pemohon`, `nama_pemohon`, `jumlah_anggota`, `nama_dusun`, `nama_kecamatan`, 
-                        `nama_kota`, `luas_penanaman`, `keterangan`, `peta_lokasi`, `ktp_pemohon`) 
-                        VALUES (NULL, '26', '200', '2022-12-12', '',
-                         'Menunggu', 'perorangan', 'Wayne W', '1', 'Kebun Kesadaran', 'Talawaan', 
-                         'Minahasa Utara', '2', 'Kebun keluarga besar', 'data/peta/test.png', 'data/ktp/test.png')";
-                        $result = mysqli_query($conn, $query);
-                        if ($result) {
-                            $berhasil = "Permohonan Berhasil Dibuat";
-                            echo "<script type='text/javascript'>
-                                alert('$berhasil');
-                            </script>";
-                        } else {
-                            echo "<script>alert('Gagal')</script>";
-                        }
-                    }
-                    ?>
 
                 </fieldset>
             </form>
